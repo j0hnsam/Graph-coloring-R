@@ -1,5 +1,6 @@
 toronto<-matrix(ncol=8,nrow = 13) #genikos pinakas dedomenwn
 colnames(toronto) <- c("Name","|V|","Density","Min","Med","Max","Mean","CV")
+#toronto[1,1]="toronto/test.txt" #test file
 toronto[1,1]="toronto/hec-s-92.stu"
 toronto[2,1]="toronto/sta-f-83.stu"
 toronto[3,1]="toronto/yor-f-83.stu"
@@ -13,20 +14,25 @@ toronto[10,1]="toronto/car-f-92.stu"
 toronto[11,1]="toronto/uta-s-92.stu"
 toronto[12,1]="toronto/car-s-91.stu"
 toronto[13,1]="toronto/pur-s-93.stu"
+get_neighbors <- function(temp_x){ #neighbors function
+  q=1
+  neighbors=c()
+  for(i in 1:m)
+    {
+      if(data2[temp_x,i]>0 && temp_x!=i)
+      {
+        neighbors[q]<-i
+        q=q+1
+        
+      }
+  }
+  return (neighbors)
+}
 for(w in 1:13){
 data <- read.table(toronto[w,1],sep=" ",fill=TRUE,col.names=1:(max(count.fields(toronto[w,1], sep = " ")))) #diavasma arxeiou
 data <- data[ -c(ncol(data)) ]
 k=0                       #k=synolikes eggrafes
-for(i in 1:ncol(data)){
-  for(j in 1:nrow(data)){
-    if (is.na(data[j,i])){
-      k=k+1
-    }
-  }
-}
-k=ncol(data)*nrow(data)-k
 m=max(data, na.rm = TRUE) #m=megistos arithos mathimatwn
-
 data2 <- matrix(0L,nrow = m, ncol = m)   #pinakas geitoneikotitas arxikopoihsh me 0
 for(j in 1:nrow(data)){
   t=ncol(data)                        
@@ -35,10 +41,11 @@ for(j in 1:nrow(data)){
       t=t-1
     }
   }
-  for(i in 1:t){  
-    for(n in i:t){    
-        data2[data[j,n],data[j,i]]=1    
-        data2[data[j,i],data[j,n]]=1
+  for(i in 1:t){ 
+    k=k+1
+    for(n in i:t){
+        data2[data[j,n],data[j,i]]=data2[data[j,n],data[j,i]]+1  
+        if(data[j,i]!=data[j,n]){data2[data[j,i],data[j,n]]=1}
     }
   }
 }
@@ -58,7 +65,7 @@ dens=(dens-m)/f
 degrees <- matrix(-1L,nrow = m) #pinakas vathwn koryfwn 
 for(i in 1:nrow(degrees)){
   for(n in 1:nrow(degrees)){
-    if(data2[i,n]==1){
+    if(data2[i,n]>0){
       degrees[i]=degrees[i]+1
     }
   }
