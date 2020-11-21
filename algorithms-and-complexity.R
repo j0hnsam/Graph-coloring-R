@@ -103,12 +103,12 @@ for(i in 1:m){
 cv=sqrt((1/m)*cv)/mean*100
 
 results <- matrix(nrow = m) #greedy algorithm
-results[1]=0
+results[1]=1
 availiable <- matrix(TRUE,nrow = m)
 for(u in 2:m){
 v=get_neighbors(u)
 if(is.null(v)==TRUE){
-  results[u]=0 }
+  results[u]=1 }
 else {for(i in 1:length(v)){
   i=v[i]
   if(is.na(results[i])==FALSE){
