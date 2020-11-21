@@ -1,5 +1,5 @@
-toronto<-matrix(ncol=8,nrow = 13) #genikos pinakas dedomenwn
-colnames(toronto) <- c("Name","|V|","Density","Min","Med","Max","Mean","CV")
+toronto<-matrix(ncol=9,nrow = 13) #genikos pinakas dedomenwn
+colnames(toronto) <- c("Name","|V|","Density","Min","Med","Max","Mean","CV","greedy")
 #toronto[1,1]="toronto/test.txt" #test file
 toronto[1,1]="toronto/hec-s-92.stu"
 toronto[2,1]="toronto/sta-f-83.stu"
@@ -102,6 +102,32 @@ for(i in 1:m){
 }
 cv=sqrt((1/m)*cv)/mean*100
 
+results <- matrix(nrow = m) #greedy algorithm
+results[1]=0
+availiable <- matrix(TRUE,nrow = m)
+for(u in 2:m){
+v=get_neighbors(u)
+if(is.null(v)==TRUE){
+  results[u]=0 }
+else {for(i in 1:length(v)){
+  i=v[i]
+  if(is.na(results[i])==FALSE){
+    availiable[results[i],1] = FALSE;
+  }
+}
+for(cr in 1:m){
+  if(availiable[cr]){break}
+}
+results[u]=cr
+for(i in 1:length(v)){
+  i=v[i]
+  if(is.na(results[i])==FALSE){
+    availiable[results[i],1] = TRUE;
+  }
+}
+}
+}
+
 toronto[w,2]=m
 toronto[w,3]=dens
 toronto[w,4]=min
@@ -109,6 +135,7 @@ toronto[w,5]=median
 toronto[w,6]=max
 toronto[w,7]=mean
 toronto[w,8]=cv
+toronto[w,9]=max(results)
 }
   
   
