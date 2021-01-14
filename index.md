@@ -12,7 +12,7 @@ graphcoring is a small R library solves this problem for toronto dataset and for
 - Statistics matrix.
 - Color vertices with prefered algorithm.
 
-## Supported Keras layers:
+## Supported algorithms:
 - [x] FirstFit
 - [x] Dsatur 
 - [ ] RLF
