@@ -24,7 +24,6 @@ graphcoring is a small R library solves this problem for toronto dataset and for
 example.r:
 
 ```R
-
 library(graphcoloring)
 #x=import("toronto/hec-s-92.stu","") #loads dataset from file with prefered seperation
 x=data.frame(hec_s_92) #loads dataset from library
@@ -39,5 +38,4 @@ Dsatur=Dsatur(x)
 validation_FirstFit=check_algo(FirstFit) #true means no color collisions false means color collisions
 validation_Dsatur=check_algo(Dsatur) #true means no color collisions false means color collisions
 #solve_toronto() #use it to color all toronto datasets with all algorithms
-
 ```
