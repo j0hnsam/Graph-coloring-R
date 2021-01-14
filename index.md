@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## R Library for graph coloring
 
 You can use the [editor on GitHub](https://github.com/j0hnsam/algorithms-and-complexity/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
