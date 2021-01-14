@@ -23,7 +23,7 @@ graphcoring is a small R library solves this problem for toronto dataset and for
 
 example.r:
 
-```r
+```R
 
 library(graphcoloring)
 #x=import("toronto/hec-s-92.stu","") #loads dataset from file with prefered seperation
