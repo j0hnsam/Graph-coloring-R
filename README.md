@@ -39,4 +39,5 @@ validation_Dsatur=check_algo(Dsatur) #true means no color collisions false means
 ```
 # How to open project
 *Tested with R (>= 2.10)
+
 Run graphcoloring.Rproj
