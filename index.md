@@ -10,10 +10,34 @@ graphcoring is a small R library solves this problem for toronto dataset and for
 - Degree of vertices.
 - Coefficient of variation.
 - Statistics matrix.
-- Color vertices with prefered algorithm.
+- Numeric coloring vertices with prefered algorithm.
+- Coloring validation.
 
 ## Supported algorithms:
 - [x] FirstFit
 - [x] Dsatur 
 - [ ] RLF
 - [ ] Backtracking Dsatur
+
+# Example
+
+example.r:
+
+```
+
+library(graphcoloring)
+#x=import("toronto/hec-s-92.stu","") #loads dataset from file with prefered seperation
+x=data.frame(hec_s_92) #loads dataset from library
+distinct=distinct(x) #distinct verticies
+AdjMatrix=AdjMatrix(x) #Adjacency matrix
+Degrees=degrees(x)
+coef_variation=coef_variation(x)
+conf_density=conf_density(x)
+statistics=stats(x)
+FirstFit=FirstFit(x)
+Dsatur=Dsatur(x)
+validation_FirstFit=check_algo(FirstFit) #true means no color collisions false means color collisions
+validation_Dsatur=check_algo(Dsatur) #true means no color collisions false means color collisions
+#solve_toronto() #use it to color all toronto datasets with all algorithms
+
+```
