@@ -37,3 +37,7 @@ validation_FirstFit=check_algo(FirstFit) #true means no color collisions false m
 validation_Dsatur=check_algo(Dsatur) #true means no color collisions false means color collisions
 #solve_toronto() #use it to color all toronto datasets with all algorithms
 ```
+# How to open project
+*Tested with R (>= 2.10)
+
+Run graphcoloring.Rproj
