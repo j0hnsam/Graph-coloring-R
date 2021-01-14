@@ -21,8 +21,6 @@ graphcoring is a small R project that solves this problem for toronto dataset an
 
 # Example
 
-example.r:
-
 ```R
 library(graphcoloring)
 #x=import("toronto/hec-s-92.stu","") #loads dataset from file with prefered seperation
